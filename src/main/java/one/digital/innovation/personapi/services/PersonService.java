@@ -1,4 +1,4 @@
-package one.digital.innovation.personapi.service;
+package one.digital.innovation.personapi.services;
 
 import one.digital.innovation.personapi.dto.request.PersonDTO;
 import one.digital.innovation.personapi.dto.response.MessageResponseDTO;
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -58,7 +57,7 @@ public class PersonService {
         Person personToUpdate = personMapper.toModel(personDTO);
 
         Person updatedPerson = personRepository.save(personToUpdate);
-        return createMessageResponse(personToUpdate.getId(), "Updated person with ID");
+        return createMessageResponse(personToUpdate.getId(), "Updated person with ID ");
     }
 
     private Person verifyIfExists(Long id) throws PersonNotFoundException {
@@ -73,7 +72,7 @@ public class PersonService {
     private MessageResponseDTO createMessageResponse(Long id,String message) {
         return MessageResponseDTO
                 .builder()
-                .message(message + " " + id)
+                .message(message + id)
                 .build();
     }
 }
